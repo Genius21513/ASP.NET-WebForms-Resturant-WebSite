@@ -1,0 +1,250 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebApplication.SiteMaster" %>
+
+<!DOCTYPE html>
+
+<html lang="pt">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %></title>
+
+    <asp:PlaceHolder runat="server">
+        <%: Scripts.Render("~/bundles/modernizr") %>
+    </asp:PlaceHolder>
+
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        .vertical-menu {
+            width: 120px;
+            height: 100%;
+            overflow-y: auto;
+        }
+
+            .vertical-menu a {
+                color: black;
+                display: block;
+                padding: 12px;
+                text-decoration: none;
+            }
+
+
+
+                .vertical-menu a.active {
+                    background-color: #04AA6D;
+                    color: white;
+                }
+
+        .menu:hover {
+            background: #027491;
+            padding: 1px;
+        }
+
+        .btnicon:hover {
+            background-color: #8f8787;
+        }
+
+        .btnbackgroundcolor:hover {
+            background-color: #027494;
+        }
+
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: black;
+                text-decoration: none;
+                cursor: pointer;
+            }
+    </style>
+</head>
+<body style="margin-top: 0px; padding-top: 0px; margin-right: 0px; padding-right: 0px;">
+    <form runat="server">
+        <asp:ScriptManager runat="server">
+            <Scripts>
+                <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+                <%--Framework Scripts--%>
+                <asp:ScriptReference Name="MsAjaxBundle" />
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+                <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+                <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+                <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+                <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+                <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+                <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+                <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+                <asp:ScriptReference Name="WebFormsBundle" />
+                <%--Site Scripts--%>
+            </Scripts>
+        </asp:ScriptManager>
+        <table style="position: absolute; width: 99%; height: 100%; margin-top: 0px;">
+            <tr>
+                <td style="border-right: 1px solid black; width: 10%">
+                    <div class="vertical-menu">
+                        <div style="align-items: center; margin-left: 15px; margin-top: 4px; margin-bottom: 4px;">
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Content/Image/logo.png" Height="80px" ImageAlign="Middle" />
+
+                        </div>
+
+                        <div style="display: grid; place-items: center; padding-top: 20px;">
+                            <a href="Home.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image22" runat="server" ImageUrl="~/Content/Image/home.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Home</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 20px;">
+                            <a href="Dashboard.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image2" runat="server" ImageUrl="~/Content/Image/grafico.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Dashboard</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Customers.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image3" runat="server" ImageUrl="~/Content/Image/people.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Customers</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Tables.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image31" runat="server" ImageUrl="~/Content/Image/mesa.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Tables</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Orders.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image4" runat="server" ImageUrl="~/Content/Image/ordersicon.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Orders</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Statistics.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image5" runat="server" ImageUrl="~/Content/Image/chartcircle.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Statistics</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Users.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image8" runat="server" ImageUrl="~/Content/Image/User.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>Users</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Settings.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image6" runat="server" ImageUrl="~/Content/Image/settings.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>settings</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div style="display: grid; place-items: center; padding-top: 10px;">
+                            <a href="Logout.aspx" style="padding: 0px; margin: 0px;">
+                                <div class="menu" style="display: grid; place-items: center; padding-top: 8px; width: 80px; border-radius: 1em;">
+                                    <div>
+                                        <asp:Image ID="Image7" runat="server" ImageUrl="~/Content/Image/logout.png" Style="height: 30px;" ImageAlign="Middle" />
+                                    </div>
+                                    <div style="align-items: center;">
+                                        <label>logout</label>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </td>
+                <td style="position: absolute; height: 100%; width: 90%; padding-left: 10px; margin-top: 0px; margin-right: 0px; padding-right: 0px; background-color: #f8f8f8;">
+                    <div class="container body-content" style="position: absolute; width: 100%; height: 100%; background-color: #f8f8f8; margin-top: 0px; margin-right: 0px; padding-right: 0px;">
+                        <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>            
+                <div id="modalConteudo"></div>            
+        </div>
+    </div>
+</body>
+</html>

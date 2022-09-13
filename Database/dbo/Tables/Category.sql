@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Category]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+	[Description] VARCHAR(200) NOT NULL,	
+	[UrlImg] VARCHAR(8000) NOT NULL,
+	
+)

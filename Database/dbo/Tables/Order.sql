@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Ordem]
+(
+	[Id] UNIQUEIDENTIFIER PRIMARY KEY,
+	[CustomerId] INT NULL,
+	[Total] DECIMAL(17,2)
+)
